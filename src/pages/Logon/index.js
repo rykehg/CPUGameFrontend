@@ -19,22 +19,23 @@ function makeid() {
 
 export default function Logon() {
   const [email, setEmail] = useState('');
-  const [passsword, setPassword] = useState('');
+  const [password, setPassword] = useState('');
   const history = useHistory();
-  const tolken = makeid()
-
-  console.log(tolken)
+  const token = makeid()
   
   async function handleLogin(e) {
     e.preventDefault();
 
     try {
-      const response = await api.post('/sessions', { id: email });
+      const response = await api.post('/session/authenticate',
+       { 
+         email: email,
+         password: password
+        });
 
       localStorage.setItem('email', email);
       localStorage.setItem('userName', response.data.name);
-      localStorage.setItem('tolken', tolken)
-      
+      localStorage.setItem('token', response.data.token)      
 
       history.push('/profile');
     } catch (err) {
@@ -50,13 +51,14 @@ export default function Logon() {
           <h1>Faça seu logon</h1>
 
           <input 
-            placeholder="Seu E-mail"
+            placeholder="Seu e-mail"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
           <input 
-            placeholder="Sua Senha"
-            value={passsword}
+            type='password'
+            placeholder="Sua senha"
+            value={password}
             onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">Entrar</button>
@@ -64,6 +66,10 @@ export default function Logon() {
           <Link className="back-link" to="/auth/register">
             <FiLogIn size={16} color="#E02041" />
             Não tenho cadastro
+          </Link>
+          <Link className="back-link" to="/auth/forgotPassword">
+            <FiLogIn size={16} color="#E02041" />
+            Esqueci minha senha
           </Link>
         </form>
       </section>

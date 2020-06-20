@@ -4,14 +4,13 @@ import { FiArrowLeft } from 'react-icons/fi';
 
 import api from '../../services/api';
 import './styles.css';
-
+import '../../utils/PasswordStrenght';
 
 export default function RegisterPassword() {
   const [token, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [password1, setPassword1] = useState('');
-
+  //const [password2, setPassword2] = useState('');
 
   const history = useHistory();
 
@@ -21,11 +20,11 @@ export default function RegisterPassword() {
     const data = {
       token: token,
       email: email,
-      password: password
+      password: password1
     };
 
     try {
-      const response = await api.post('/auth/reset_password', data);
+      const response = await api.post('/auth/first_access', data);
 
       if(response)
       alert(`Senha cadastrada com sucesso.`);
@@ -61,20 +60,21 @@ export default function RegisterPassword() {
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
-
+          
           <input 
             placeholder="Senha de acesso"
             type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)} 
-          />
-
-          <input 
-            placeholder="Repita sua Senha"
-            type="password"
+            id='password'
             value={password1}
             onChange={e => setPassword1(e.target.value)} 
           />
+          <label id ='passwordStrMessage' />
+{/*           <input 
+            placeholder="Repita sua senha"
+            type="password"
+            value={password2}
+            onChange={e => setPassword2(e.target.value)} 
+          /> */}
 
           <button className="button" type="submit">Cadastrar Senha</button>
         </form>
