@@ -6,21 +6,35 @@ import api from '../../services/api';
 
 import './styles.css';
 
-import logoImg from '../../assets/logo.svg';
-import heroesImg from '../../assets/heroes.png';
+//TODO regra de negocio refatorar
+function makeid() {
+  let text = "";
+  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (let i = 0; i < 10; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
+}
 
 export default function Logon() {
-  const [id, setId] = useState('');
+  const [email, setEmail] = useState('');
+  const [passsword, setPassword] = useState('');
   const history = useHistory();
+  const tolken = makeid()
 
+  console.log(tolken)
+  
   async function handleLogin(e) {
     e.preventDefault();
 
     try {
-      const response = await api.post('/sessions', { id });
+      const response = await api.post('/sessions', { id: email });
 
-      localStorage.setItem('ongId', id);
-      localStorage.setItem('ongName', response.data.name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('userName', response.data.name);
+      localStorage.setItem('tolken', tolken)
+      
 
       history.push('/profile');
     } catch (err) {
@@ -30,26 +44,29 @@ export default function Logon() {
 
   return (
     <div className="logon-container">
-      <section className="form">
-        <img src={logoImg} alt="Be The Hero"/>
+      <section className="form">        
 
         <form onSubmit={handleLogin}>
           <h1>Faça seu logon</h1>
 
           <input 
-            placeholder="Sua ID"
-            value={id}
-            onChange={e => setId(e.target.value)}
+            placeholder="Seu E-mail"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+          />
+          <input 
+            placeholder="Sua Senha"
+            value={passsword}
+            onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">Entrar</button>
 
-          <Link className="back-link" to="/register">
+          <Link className="back-link" to="/auth/register">
             <FiLogIn size={16} color="#E02041" />
             Não tenho cadastro
           </Link>
         </form>
       </section>
-      <img src={heroesImg} alt="Heroes"/>
     </div>
   );
 }

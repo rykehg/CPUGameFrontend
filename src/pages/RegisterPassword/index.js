@@ -6,11 +6,11 @@ import api from '../../services/api';
 import './styles.css';
 
 
-export default function Register() {
-  const [name, setName] = useState('');
+export default function RegisterPassword() {
+  const [token, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [login, setLogin] = useState('');
-  const [type, setType] = useState('');
+  const [password, setPassword] = useState('');
+  const [password1, setPassword1] = useState('');
 
 
   const history = useHistory();
@@ -19,16 +19,16 @@ export default function Register() {
     e.preventDefault();
 
     const data = {
-      name,
-      email,
-      login,
-      type
+      token: token,
+      email: email,
+      password: password
     };
 
     try {
-      const response = await api.post('/auth/register', data);
+      const response = await api.post('/auth/reset_password', data);
 
-      alert(`Verifique seu e-mail para continuar com o cadastro.`, response);
+      if(response)
+      alert(`Senha cadastrada com sucesso.`);
 
       history.push('/');
     } catch (err) {
@@ -41,7 +41,7 @@ export default function Register() {
       <div className="content">
         <section>
           <h1>Cadastro</h1>
-          <p>Faça seu cadastro</p>
+          <p>Cadastre sua senha</p>
 
           <Link className="back-link" to="/">
             <FiArrowLeft size={16} color="#E02041" />
@@ -50,31 +50,33 @@ export default function Register() {
         </section>
         <form onSubmit={handleRegister}>
           <input 
-            placeholder="Nome" 
-            value={name}
+            placeholder="Token de acesso" 
+            value={token}
             onChange={e => setName(e.target.value)}
           />
 
           <input 
             type="email" 
-            placeholder="Email" 
+            placeholder="E-mail" 
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
 
           <input 
-            placeholder="Login de acesso"
-            value={login}
-            onChange={e => setLogin(e.target.value)} 
+            placeholder="Senha de acesso"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)} 
           />
 
-{/*           <div onChange={e => setType.bind(e)}>
-            <label htmlFor="Opcao"></label>
-            <input type="radio" name="opção" value="professor" />Professor 
-            <input type="radio" name="opção" value="aluno" />Aluno
-          </div> */}
+          <input 
+            placeholder="Repita sua Senha"
+            type="password"
+            value={password1}
+            onChange={e => setPassword1(e.target.value)} 
+          />
 
-          <button className="button" type="submit">Cadastrar</button>
+          <button className="button" type="submit">Cadastrar Senha</button>
         </form>
       </div>
     </div>
