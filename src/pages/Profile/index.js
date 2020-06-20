@@ -7,22 +7,9 @@ import api from '../../services/api';
 import './styles.css'
 
 export default function Profile() {
-  const [userName, setUserName] = useState([]);
-  
   const history = useHistory();
-
-  const userId = localStorage.getItem('Id');
-  const userName = localStorage.getItem('nm_user');
-
-  useEffect(() => {
-    api.get('/profile', {
-      headers: {
-        Authorization: userId,
-      }
-    }).then(response => {
-      setUserName(response.data);
-    })
-  }, [userId]);
+  //const userId = localStorage.getItem('cd_User');
+  const userName = localStorage.getItem('nm_User');
 
   function handleLogout() {
     localStorage.clear();

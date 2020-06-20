@@ -6,7 +6,7 @@ import api from '../../services/api';
 import './styles.css';
 
 
-export default function Register() {
+export default function RegisterPassword() {
   const [token, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -57,7 +57,7 @@ export default function Register() {
 
           <input 
             type="email" 
-            placeholder="email" 
+            placeholder="E-mail" 
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
@@ -76,7 +76,7 @@ export default function Register() {
             onChange={e => setPassword1(e.target.value)} 
           />
 
-          <button className="button" type="submit">Cadastrar</button>
+          <button className="button" type="submit">Cadastrar Senha</button>
         </form>
       </div>
     </div>
