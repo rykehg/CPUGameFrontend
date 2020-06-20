@@ -19,22 +19,23 @@ function makeid() {
 
 export default function Logon() {
   const [email, setEmail] = useState('');
-  const [passsword, setPassword] = useState('');
+  const [password, setPassword] = useState('');
   const history = useHistory();
-  const tolken = makeid()
-
-  console.log(tolken)
+  const token = makeid()
   
   async function handleLogin(e) {
     e.preventDefault();
 
     try {
-      const response = await api.post('/sessions', { id: email });
+      const response = await api.post('/session/authenticate',
+       { 
+         email: email,
+         password: password
+        });
 
       localStorage.setItem('email', email);
       localStorage.setItem('userName', response.data.name);
-      localStorage.setItem('tolken', tolken)
-      
+      localStorage.setItem('token', response.data.token)      
 
       history.push('/profile');
     } catch (err) {
@@ -55,8 +56,9 @@ export default function Logon() {
             onChange={e => setEmail(e.target.value)}
           />
           <input 
+            type='password'
             placeholder="Sua senha"
-            value={passsword}
+            value={password}
             onChange={e => setPassword(e.target.value)}
           />
           <button className="button" type="submit">Entrar</button>
