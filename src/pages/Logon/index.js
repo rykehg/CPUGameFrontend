@@ -50,12 +50,12 @@ export default function Logon() {
           <h1>Faça seu logon</h1>
 
           <input 
-            placeholder="Seu E-mail"
+            placeholder="Seu e-mail"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
           <input 
-            placeholder="Sua Senha"
+            placeholder="Sua senha"
             value={passsword}
             onChange={e => setPassword(e.target.value)}
           />
@@ -64,6 +64,10 @@ export default function Logon() {
           <Link className="back-link" to="/auth/register">
             <FiLogIn size={16} color="#E02041" />
             Não tenho cadastro
+          </Link>
+          <Link className="back-link" to="/auth/forgotPassword">
+            <FiLogIn size={16} color="#E02041" />
+            Esqueci minha senha
           </Link>
         </form>
       </section>

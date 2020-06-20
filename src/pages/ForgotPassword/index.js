@@ -6,7 +6,7 @@ import api from '../../services/api';
 import './styles.css';
 
 
-export default function forgotPassword() {
+export default function ForgotPassword() {
   const [email, setEmail] = useState('');
 
   const history = useHistory();
@@ -22,7 +22,7 @@ export default function forgotPassword() {
       const response = await api.post('/auth/forgot_password', data);
 
       if(response)
-      alert(`Cheque seu e-mail para continuar.`);
+        alert(`Cheque seu e-mail para continuar.`);
 
       history.push('/');
     } catch (err) {
