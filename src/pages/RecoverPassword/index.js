@@ -10,8 +10,7 @@ export default function RecoverPassword() {
   const [token, setName] = useState('');
   const [email, setEmail] = useState('');
   const [newPassword1, setNewPassword1] = useState('');
-  const [newPassword2, setNewPassword2] = useState('');
-
+  //const [newPassword2, setNewPassword2] = useState('');
 
   const history = useHistory();
 
@@ -21,7 +20,7 @@ export default function RecoverPassword() {
     const data = {
       token: token,
       email: email,
-      newPassword: newPassword1
+      password: newPassword1
     };
 
     try {
@@ -65,16 +64,16 @@ export default function RecoverPassword() {
           <input 
             placeholder="Senha de acesso"
             type="password"
-            value={newPassword1}
+            id="password"            
+            value={newPassword1}            
             onChange={e => setNewPassword1(e.target.value)} 
           />
-
-          <input 
+{/*           <input 
             placeholder="Repita sua senha"
             type="password"
             value={newPassword2}
             onChange={e => setNewPassword2(e.target.value)} 
-          />
+          /> */}
 
           <button className="button" type="submit">Cadastrar Senha Nova</button>
         </form>
