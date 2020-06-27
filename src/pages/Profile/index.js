@@ -9,7 +9,7 @@ import './styles.css'
 export default function Profile() {
   const history = useHistory();
   //const userId = localStorage.getItem('cd_User');
-  const userName = localStorage.getItem('nm_User');
+  const userName = localStorage.getItem('userName');
 
   function handleLogout() {
     localStorage.clear();
@@ -22,7 +22,7 @@ export default function Profile() {
       <header>
         <span>Bem vindo(a), {userName}</span>
 
-        <Link className="button" to="/incidents/new">Cadastrar novo caso</Link>
+        <Link className="button" to="/game/new">Ir para o jogo</Link>
         <button onClick={handleLogout} type="button">
           <FiPower size={18} color="#E02041" />
         </button>

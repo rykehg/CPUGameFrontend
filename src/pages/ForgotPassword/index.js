@@ -25,8 +25,8 @@ export default function ForgotPassword() {
         alert(`Cheque seu e-mail para continuar.`);
 
       history.push('/');
-    } catch (err) {
-      alert(`Erro no cadastro. ${err}`);
+    } catch (error) {
+      alert(`Erro no cadastro. ${error.response.data.error}`);
     }
   }
 

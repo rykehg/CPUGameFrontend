@@ -6,22 +6,10 @@ import api from '../../services/api';
 
 import './styles.css';
 
-//TODO regra de negocio refatorar
-function makeid() {
-  let text = "";
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (let i = 0; i < 10; i++)
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  return text;
-}
-
 export default function Logon() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
-  const token = makeid()
   
   async function handleLogin(e) {
     e.preventDefault();
@@ -33,9 +21,11 @@ export default function Logon() {
          password: password
         });
 
-      localStorage.setItem('email', email);
-      localStorage.setItem('userName', response.data.name);
-      localStorage.setItem('token', response.data.token)      
+      localStorage.setItem('userId', response.data.user.cd_User);
+      localStorage.setItem('email', response.data.user.nm_Email)
+      localStorage.setItem('userName', response.data.user.nm_Name);
+      localStorage.setItem('token', response.data.token);  
+      console.log(response.data)    
 
       history.push('/profile');
     } catch (err) {
@@ -45,7 +35,7 @@ export default function Logon() {
 
   return (
     <div className="logon-container">
-      <section className="form">        
+      <section className="form">
 
         <form onSubmit={handleLogin}>
           <h1>Faça seu logon</h1>
