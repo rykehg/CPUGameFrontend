@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -12,8 +12,15 @@ export default function Register() {
   const [login, setLogin] = useState('');
   const [type, setType] = useState('');
 
-
   const history = useHistory();
+
+/*   useEffect(() => {
+    api.post('/auth/register').then(response => {    
+    setRegister(response.data);
+    console.log(response.data)
+    })
+
+    }, []); */
 
   async function handleRegister(e) {
     e.preventDefault();
@@ -24,16 +31,18 @@ export default function Register() {
       login,
       type
     };
-
+    
     try {
       const response = await api.post('/auth/register', data);
+
+      console.log(response)
 
       alert(`Verifique seu e-mail para continuar com o cadastro.`, response);
 
       history.push('/');
-    } catch (err) {
-      alert(`Erro no cadastro. ${err}`);
-    }
+    } catch (error) {
+      alert(`Erro no cadastro. ${error.response.data.error}`);
+    } 
   }
 
   return (
