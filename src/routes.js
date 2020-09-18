@@ -7,6 +7,7 @@ import RegisterPassword from './pages/RegisterPassword';
 import ForgotPassword from './pages/ForgotPassword';
 import RecoverPassword from './pages/RecoverPassword';
 import Profile from './pages/Profile';
+import Game from './pages/Game';
 
 export default function Routes() {
   return (
@@ -18,6 +19,7 @@ export default function Routes() {
         <Route path="/auth/forgotPassword" component={ForgotPassword} />
         <Route path="/auth/recoverPassword" component={RecoverPassword} />
         <Route path="/profile" component={Profile} />
+        <Route path="/game/new" component={Game} />
       </Switch>
     </BrowserRouter>
   );
