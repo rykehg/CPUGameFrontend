@@ -37,7 +37,7 @@ export default function ForgotPassword() {
           <h1>Recuperar Senha</h1>
           <p>Recupere sua senha</p>
 
-          <Link className="back-link" to="/">
+          <Link className="back-link" to="/Logon">
             <FiArrowLeft size={16} color="#E02041" />
             Já tenho cadastro
           </Link>

@@ -52,7 +52,7 @@ export default function Register() {
           <h1>Cadastro</h1>
           <p>Faça seu cadastro</p>
 
-          <Link className="back-link" to="/">
+          <Link className="back-link" to="/Logon">
             <FiArrowLeft size={16} color="#E02041" />
             Já tenho cadastro
           </Link>

@@ -42,7 +42,7 @@ export default function RecoverPassword() {
           <h1>Cadastro</h1>
           <p>Cadastre sua senha nova</p>
 
-          <Link className="back-link" to="/">
+          <Link className="back-link" to="/Logon">
             <FiArrowLeft size={16} color="#E02041" />
             Já tenho cadastro
           </Link>
