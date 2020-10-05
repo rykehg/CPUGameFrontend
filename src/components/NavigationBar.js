@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
@@ -27,6 +27,18 @@ export const NavigationBar = () => (
               <Link to="/">Home</Link>
             </Nav.Link>
           </Nav.Item>
+          <NavDropdown title="Jogo" id="basic-nav-dropdown">
+            <NavDropdown.Item>
+              <Link to="/game/rules">Como jogar</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item to="">
+              <Link to="/game/cards">Cartas do Jogo</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item to="">
+              <Link to="/game/new">Jogar</Link>              
+            </NavDropdown.Item>
+          </NavDropdown>
           <Nav.Item>
             <Nav.Link>
               <Link to="/about">Sobre</Link>
@@ -34,12 +46,7 @@ export const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
-              <Link to="/Logon">Logon</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/game/new">Game</Link>
+              <Link to="/login">Login</Link>
             </Nav.Link>
           </Nav.Item>
         </Nav>
