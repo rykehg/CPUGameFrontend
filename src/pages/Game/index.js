@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from 'react'
 import creatGame from './gameState'
 import startGame from './gameSetup'
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi'
+import Button from 'react-bootstrap/Button'
 
 import './styles.css'
-import board from './assets/ProcessadorGameTabuleiro.png'
+import board from './assets/ProcessadorGameTabuleiroV2.png'
 
 function App() {
   const canvas = useRef()
@@ -42,7 +43,7 @@ function App() {
   const draw = () => {
     ctx.clearRect(0, 0, canvas.current.clientWidth, canvas.current.clientHeight)
     const img = document.getElementById("boardImage")
-    ctx.drawImage(img, 0, 0)
+    ctx.drawImage(img, 0, 0, 960, 540)
     //Highlight objCollided
     if (objCollided) {
       const os = objCollided
@@ -201,19 +202,19 @@ function App() {
  
   return (
     <div className="App">
-      <img id='boardImage' src={board} alt='tabuleiro' style={{display: 'none'}}/>
+      <img id='boardImage' src={board} alt='tabuleiro' style={{display: 'none', width: '960px'}}/>
       <canvas
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseOut={handleMouseOut}
         ref={canvas}></canvas>
-        <button onClick={addPiece} type="button">
-            <FiPlusCircle size={18} color="#E02041" />
-        </button>
-        <button onClick={removePiece} type="button">
-            <FiMinusCircle size={18} color="#E02041" />
-        </button>
+        <Button variant="outline-success" onClick={addPiece}>
+            <FiPlusCircle size={18} />
+        </Button>
+        <Button variant="outline-danger" onClick={removePiece}>
+            <FiMinusCircle size={18} />
+        </Button>
     </div>
   );
 }

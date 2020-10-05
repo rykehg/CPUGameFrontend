@@ -1,7 +1,7 @@
-.App {
-  margin: 30px;
-}
- 
+ .App {
+  align-items: flex-start center;
+ }
+
 canvas {
   border: 2px solid #000000;
   image-rendering: auto;

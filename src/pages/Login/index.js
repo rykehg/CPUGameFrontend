@@ -39,7 +39,7 @@ export default function Logon() {
         <section>
 
           <form onSubmit={handleLogin}>
-            <h1>Faça seu logon</h1>
+            <h1>Faça seu login</h1>
 
             <input 
               placeholder="Seu e-mail"

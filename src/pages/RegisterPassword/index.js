@@ -42,7 +42,7 @@ export default function RegisterPassword() {
           <h1>Cadastro</h1>
           <p>Cadastre sua senha</p>
 
-          <Link className="back-link" to="/Logon">
+          <Link className="back-link" to="/login">
             <FiArrowLeft size={16} color="#E02041" />
             Já tenho cadastro
           </Link>

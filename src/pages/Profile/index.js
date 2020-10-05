@@ -19,14 +19,6 @@ export default function Profile() {
 
   return (
     <div className="profile-container">
-      <header>
-        <span>Bem vindo(a), {userName}</span>
-
-        <Link className="button" to="/game/new">Ir para o jogo</Link>
-        <button onClick={handleLogout} type="button">
-          <FiPower size={18} color="#E02041" />
-        </button>
-      </header>
 
     </div>
   );

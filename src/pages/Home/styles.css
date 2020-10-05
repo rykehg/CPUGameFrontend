@@ -1,5 +1,5 @@
 .home-text {
-  margin: 30px;
+  margin-top: 30px;
   width: 100%;
   padding: 30px;
   background: #f0f0f5;
@@ -7,4 +7,22 @@
   border-radius: 8px;
   text-align: center;
   align-items: center;
+}
+
+img {
+  max-width: 100%;
+  height: 400px;
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  background: #575757;
+}
+
+.full {
+  object-fit: contain;
+}
+
+.crop {
+  object-fit: cover;
+  overflow: hidden;
 }
