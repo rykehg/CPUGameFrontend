@@ -4,13 +4,13 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import styled from 'styled-components';
 
 const Styles = styled.div`
-  .navbar {
+  .navbar, .dropdown-menu {
     background-color: #171941;
   }
   a, .navbar-brand, .navbar-nav .nav-link {
     color: #bbb;
     &:hover {
-      color: white;
+      color: gray;
     }
   }
 `;

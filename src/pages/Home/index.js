@@ -13,7 +13,14 @@ export default function Home() {
   return (
     <>
       <Row>
-        <Carousel interval={1000} keyboard={false} pauseOnHover={true}>
+        <div className="home-text">
+          <h1>CPU Game</h1>
+          <h2>The Neumann Machine</h2>
+          <h4>Uma ferramenta de aprendizado e ensino de arquitetura de computadores</h4>
+        </div>
+      </Row>
+      <Row className="Home">
+        <Carousel interval={3000} keyboard={false} pauseOnHover={true}>
           <Carousel.Item>
             <img
               className="d-block w-100 full"
@@ -31,7 +38,6 @@ export default function Home() {
               src={GameExemple1}
               alt="Third slide"
             />
-
             <Carousel.Caption>
               <h3>Second slide label</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -49,13 +55,6 @@ export default function Home() {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </Row>
-      <Row>
-        <div className="home-text">
-          <h1>CPU Game</h1>
-          <h2>The Neumann Machine</h2>
-          <h4>Uma ferramenta de aprendizado e ensino de arquitetura de computadores</h4>
-        </div>
       </Row>
     </>
   )
