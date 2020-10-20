@@ -1,14 +1,8 @@
-.about-text {
-  margin: 30px;
-  width: 70%;
-  padding: 30px;
-  background: #f0f0f5;
-  box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  text-align: center;
-  align-items: center;
+.About-text {
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
-.about-text p {
+.About-text p {
   text-align: justify;
 }
