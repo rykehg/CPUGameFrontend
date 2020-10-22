@@ -207,7 +207,7 @@ function Home() {
   const [show, setShow] = useState(false);
   return (
     <>
-      <Row>
+{/*       <Row>
         <Col xs={6}>
           <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
             <Toast.Header>
@@ -220,7 +220,7 @@ function Home() {
         <Col xs={6}>
           <Button onClick={() => setShow(true)}>Show Toast</Button>
         </Col>
-      </Row>
+      </Row> */}
       <Row>
         <Col md={11} className="Board">
           <img id='boardImage' src={board} alt='tabuleiro' style={{ display: 'none', width: '960px' }} />
@@ -246,7 +246,7 @@ function Home() {
           </Button>
         </Col>
       </Row>
-      <Row>
+{/*       <Row>
       <Form inline>
         <Form.Group>
           <Form.Label htmlFor="objective">Objective</Form.Label>
@@ -261,7 +261,7 @@ function Home() {
             </Form.Text>
           </Form.Group>
         </Form>
-      </Row>
+      </Row> */}
     </>
   );
 }
