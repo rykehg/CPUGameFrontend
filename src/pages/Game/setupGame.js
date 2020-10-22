@@ -1,6 +1,6 @@
 import creatGame from './gameState'
 
-export default function startGame () {
+export default function setupGame () {
 
   const game = creatGame()
 
@@ -13,17 +13,17 @@ export default function startGame () {
   game.addPlayer({ playerId: 'Player6', xStart: 803, yStart: 188, playerColor: 'Teal', isLocked: false, currentTile: "MP" })
 
   //Tiles
-  game.addTile({ tileId: "MP", posX: 789, posY: 54, sizeX: 60, sizeY: 460, color: "Lime" })
-  game.addTile({ tileId: "RDM", posX: 620, posY: 135, sizeX: 85, sizeY: 35, color: "Lime" })
-  game.addTile({ tileId: "REM", posX: 620, posY: 205, sizeX: 85, sizeY: 35, color: "Lime" })
-  game.addTile({ tileId: "CI", posX: 485, posY: 220, sizeX: 77, sizeY: 35, color: "Lime" })
-  game.addTile({ tileId: "RiDi", posX: 393, posY: 345, sizeX: 111, sizeY: 97, color: "Lime" })
-  game.addTile({ tileId: "UC", posX: 212, posY: 406, sizeX: 110, sizeY: 35, color: "Lime" })
-  game.addTile({ tileId: "R1", posX: 368, posY: 179, sizeX: 105, sizeY: 17, color: "Lime" })
-  game.addTile({ tileId: "R2", posX: 368, posY: 198, sizeX: 105, sizeY: 17, color: "Lime" })
-  game.addTile({ tileId: "R3", posX: 368, posY: 216, sizeX: 105, sizeY: 17, color: "Lime" })
-  game.addTile({ tileId: "R4", posX: 368, posY: 235, sizeX: 105, sizeY: 17, color: "Lime" })
-  game.addTile({ tileId: "UAL", posX: 133, posY: 98, sizeX: 177, sizeY: 142, color: "Lime" })
+  game.addTile({ tileId: "MP", posX: 792, posY: 46, sizeX: 58, sizeY: 460, color: "Lime" })
+  game.addTile({ tileId: "RDM", posX: 619, posY: 135, sizeX: 85, sizeY: 35, color: "Lime" })
+  game.addTile({ tileId: "REM", posX: 622, posY: 205, sizeX: 83, sizeY: 35, color: "Lime" })
+  game.addTile({ tileId: "CI", posX: 484, posY: 219, sizeX: 77, sizeY: 35, color: "Lime" })
+  game.addTile({ tileId: "RiDi", posX: 393, posY: 344, sizeX: 111, sizeY: 97, color: "Lime" })
+  game.addTile({ tileId: "UC", posX: 212, posY: 405, sizeX: 110, sizeY: 35, color: "Lime" })
+  game.addTile({ tileId: "R1", posX: 368, posY: 160, sizeX: 105, sizeY: 22, color: "Lime" })
+  game.addTile({ tileId: "R2", posX: 368, posY: 183, sizeX: 105, sizeY: 22, color: "Lime" })
+  game.addTile({ tileId: "R3", posX: 368, posY: 205, sizeX: 105, sizeY: 22, color: "Lime" })
+  game.addTile({ tileId: "R4", posX: 368, posY: 229, sizeX: 105, sizeY: 22, color: "Lime" })
+  game.addTile({ tileId: "UAL", posX: 132, posY: 97, sizeX: 177, sizeY: 141, color: "Lime" })
   game.addTile({ tileId: "Monitor", posX: 892, posY: 223, sizeX: 52, sizeY: 44, color: "Lime" })
   game.addTile({ tileId: "Speaker", posX: 891, posY: 279, sizeX: 57, sizeY: 42, color: "Lime" })
   game.addTile({ tileId: "Hd", posX: 898, posY: 337, sizeX: 44, sizeY: 49, color: "Lime" })

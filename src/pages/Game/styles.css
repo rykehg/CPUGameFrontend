@@ -1,5 +1,18 @@
- .App {
+ .Menu {
   align-items: flex-start center;
+  background: #1e1f24;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 10px;
+ }
+ .Board {
+  align-items: flex-start center;
+  background: #1e1f24;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 10px;
  }
 
 canvas {

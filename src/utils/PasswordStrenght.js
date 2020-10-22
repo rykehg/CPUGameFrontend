@@ -1,4 +1,4 @@
-function validarSenhaForca(senhaValidar){
+export default function validarSenhaForca(senhaValidar){
 	const senha = senhaValidar
 	let forca = 0;	
 
@@ -30,9 +30,9 @@ function validarSenhaForca(senhaValidar){
 	if (senha.length < 7) {
 		forca = 0;
 	}
-	mostrarForca(forca);
+	return forca;
 }
-
+/*
 function mostrarForca(forca){	
 	if(forca == 0) {
 		document.getElementById("passwordStrMessage").innerHTML = "<span style='color: #ff0000'>Inválida</span>";
@@ -47,3 +47,4 @@ function mostrarForca(forca){
 		document.getElementById("passwordStrMessage").innerHTML = "<span style='color: #008000'>Forte</span>";
 	}		
 }
+*/
