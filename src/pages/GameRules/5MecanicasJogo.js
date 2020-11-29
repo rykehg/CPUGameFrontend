@@ -6,6 +6,19 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import GameExemple1 from '../../assets/GameExemple1.png'
+import Mecanica1 from '../../assets/Mecanica1.png'
+import Mecanica2Obj22 from '../../assets/Mecanica2Obj22.png'
+import Mecanica3OS27 from '../../assets/Mecanica3OS27.png'
+import Mecanica3 from '../../assets/Mecanica3.png'
+import Mecanica4NaoPerm from '../../assets/Mecanica4NaoPerm.png'
+import Mecanica5Travado from '../../assets/Mecanica5Travado.png'
+import Mecanica6SO15Imune from '../../assets/Mecanica6SO15Imune.png'
+import Mecanica6SO19Trave from '../../assets/Mecanica6SO19Trave.png'
+import Mecanica6SO07Suba from '../../assets/Mecanica6SO07Suba.png'
+import Mecanica7Decod from '../../assets/Mecanica7Decod.png'
+import Mecanica7DecodCard from '../../assets/Mecanica7DecodCard.png'
+import Mecanica7VarCard from '../../assets/Mecanica7VarCard.png'
+import Mecanica8 from '../../assets/Mecanica8.png'
 
 export default function MecanicasJogo() {
 
@@ -29,7 +42,7 @@ export default function MecanicasJogo() {
             a ser executada pelo processador.</p>
         </Col>
         <Col>
-          <img src={GameExemple1} alt="GameExemple1" className="full" />
+          <img src={Mecanica1} alt="Mecanica1" className="full" />
         </Col>
       </Row>
       <Row>
@@ -39,15 +52,16 @@ export default function MecanicasJogo() {
       </Row>
       <Row>
         <Col>
-          <img src={GameExemple1} alt="GameExemple1" className="full" />
+          <img src={Mecanica2Obj22} alt="Mecanica2Obj22" className="full" />
+          <img src={Mecanica3OS27} alt="Mecanica3OS27" className="full" />
         </Col>
         <Col>
           <p>3. A ordem dos jogadores ou processos será sorteada no início.</p>
-          <p>4. No início os jogadores sorteiam três cartas (que podem ser lidas) e escolhem 
-            uma para executar, devolvendo as demais cartas a pilha. Este é o objetivo a ser 
-            cumprido até o fim do jogo. O processo (programa/ thread), é parte de uma 
-            instrução que deverá ser cumprida e, como pontuação extra, decodificada.</p>
-          <p>5. Compram também uma carta de SO.</p>
+          <p>4. No início os jogadores sorteiam três cartas de objetivo (que podem ser lidas)  
+          e escolhem uma para executar, devolvendo as demais cartas a pilha. Este é o objetivo  
+          a ser cumprido até o fim do jogo. O processo (programa/ thread), é parte de uma 
+          instrução que deverá ser cumprida e, como pontuação extra, decodificada.</p>
+          <p>5. E por fim, compram também uma carta de SO.</p>
         </Col>
       </Row>
       <Row>
@@ -88,7 +102,19 @@ export default function MecanicasJogo() {
             mesma jogada o RDM</p>
         </Col>
         <Col>
-          <img src={GameExemple1} alt="GameExemple1" className="full" />
+          <img src={Mecanica3} alt="Mecanica3" className="full" />
+          <br /><br />
+          <img src={Mecanica4NaoPerm} alt="Mecanica4NaoPerm" className="full" />
+          <br /><br />
+          <img src={Mecanica5Travado} alt="Mecanica5Travado" className="full" />
+          <br /><br />
+          <img src={Mecanica6SO15Imune} alt="Mecanica6SO15Imune" className="full" />
+          <img src={Mecanica6SO19Trave} alt="Mecanica6SO19Trave" className="full" />
+          <img src={Mecanica6SO07Suba} alt="Mecanica6SO07Suba" className="full" />
+          <br /><br />
+          <img src={Mecanica7Decod} alt="Mecanica7Decod" className="full" />
+          <img src={Mecanica7DecodCard} alt="Mecanica7DecodCard" className="full" />
+          <img src={Mecanica7VarCard} alt="Mecanica7VarCard" className="full" />
         </Col>
       </Row>
       <Row>
@@ -98,7 +124,7 @@ export default function MecanicasJogo() {
       </Row>
       <Row>
         <Col>
-          <img src={GameExemple1} alt="GameExemple1" className="full" />
+          <img src={Mecanica8} alt="GameExemple1" className="full" />
         </Col>
         <Col>
           <p>Caso TODOS os jogadores estejam com processo interrompidos é contado um clock 
@@ -109,6 +135,9 @@ export default function MecanicasJogo() {
             dispositivo de saída correto.</p>
           <p>Ao cumprir um objetivo outro poderá ser comprado até a finalização do jogo 
             (dependendo do andamento). </p>
+          <p>A ordem de todos os movimentos obedece a ordem do jogador na posição na fila, 
+            mesmo para jogar card de SO. </p>
+          <p>Cards de SO podem ser jogados independente se o processo esta travado. </p>
           <p>Os jogadores têm acesso aos materiais e consulta que precisarem (inclusive 
             professor/monitor).  Porém ao consultarem monitores ou professor este irá para 
             o fim da fila de processos (TEORIA: o processo estaria em estado de pronto, 
