@@ -25,6 +25,14 @@ function Home() {
   let startX = null
   let startY = null
 
+  const clockPointer = [
+    {xStart: 54, yStart: 466, xEnd: 54, yEnd: 448, size: 3, color: "Lime"},
+    {xStart: 54, yStart: 466, xEnd: 35, yEnd: 453, size: 3, color: "Lime"}
+  ]
+
+  const clock = {x: 15, Y: 425, sizeX: 77, sizeY: 77, isDown: false, position: 0}
+  const processor = {x: 150, Y: 459, sizeX: 35, sizeY: 25, isDown: false, position: 1}
+
   //let game = creatGame()
   let game = setupGame()
   objDrag = game.state.piecesInPlay
@@ -69,6 +77,8 @@ function Home() {
         drawCircle(o.x, o.y, o.size, 0, o.color, o.color)
       }
     }
+    drawRectangle(15, 425, 77, 77, 2, "blue", "blue")
+    drawRectangle(150, 459, 35, 25, 2, "blue", "blue")
     //objDrag.map(info => drawTriangle(info))
   }
 
@@ -136,7 +146,7 @@ function Home() {
       }
     }
   }
-  // identify the click event in the rectangle
+  // identify the click event in the objDrag
   const hitBox = (x, y) => {
     let isTarget = null
     for (let i = 0; i < objDrag.length; i++) {
@@ -150,6 +160,13 @@ function Home() {
     }
     return isTarget
   }
+
+  const hitBoxMenus = (x, y, o) => {
+    if (x >= o.x && x <= o.x + o.sizeX && y >= o.y && y <= o.y + o.sizeY){
+      o.isDown = true
+    }
+  }
+
   const handleMouseDown = e => {
     startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft)
     startY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop)
