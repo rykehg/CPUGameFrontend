@@ -4,7 +4,7 @@ export default function setupGame () {
 
   const game = creatGame()
 
-  //Player
+  //Player Start
   game.addPlayer({ playerId: "Player1", xStart: 803, yStart: 68, playerColor: 'Red', isLocked: false, currentTile: "MP" })
   game.addPlayer({ playerId: 'Player2', xStart: 803, yStart: 92, playerColor: 'Blue', isLocked: false, currentTile: "MP" })
   game.addPlayer({ playerId: 'Player3', xStart: 803, yStart: 116, playerColor: 'DarkOrange', isLocked: false, currentTile: "MP" })
@@ -12,6 +12,14 @@ export default function setupGame () {
   game.addPlayer({ playerId: 'Player5', xStart: 803, yStart: 164, playerColor: 'DarkOrchid', isLocked: false, currentTile: "MP" })
   game.addPlayer({ playerId: 'Player6', xStart: 803, yStart: 188, playerColor: 'Teal', isLocked: false, currentTile: "MP" })
 
+  //Player Fila
+  game.addPlayerPiece({ playerId: "Player1", posX: 35, posY: 82})
+  game.addPlayerPiece({ playerId: 'Player2', posX: 35, posY: 120})
+  game.addPlayerPiece({ playerId: 'Player3', posX: 35, posY: 158})
+  game.addPlayerPiece({ playerId: 'Player4', posX: 35, posY: 197})
+  game.addPlayerPiece({ playerId: 'Player5', posX: 35, posY: 235})
+  game.addPlayerPiece({ playerId: 'Player6', posX: 35, posY: 273})
+  game.addPiecesInPlay()
   //Tiles
   game.addTile({ tileId: "MP", posX: 792, posY: 46, sizeX: 58, sizeY: 460, color: "Lime" })
   game.addTile({ tileId: "RDM", posX: 619, posY: 135, sizeX: 85, sizeY: 35, color: "Lime" })

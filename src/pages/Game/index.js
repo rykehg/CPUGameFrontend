@@ -49,6 +49,11 @@ function Home() {
     ctx.clearRect(0, 0, canvas.current.clientWidth, canvas.current.clientHeight)
     const img = document.getElementById("boardImage")
     ctx.drawImage(img, 0, 0, 960, 540)
+    //Clock Line
+    drawLine(54, 466, 35, 453, 3, "Lime")
+    //ctx.font = "30px Arial"
+    //ctx.fillText("2", 150, 482)
+    drawText("2", 153, 481, "Lime")
     //Highlight objCollided
     if (objCollided) {
       const os = objCollided
@@ -91,7 +96,6 @@ function Home() {
 
   function drawTriangle(x, y, size, lineSize, lineColor, fillColor) {
     const height = size * Math.cos(Math.PI / 6)
-
     ctx.beginPath()
     ctx.moveTo(x, y + size)
     ctx.lineTo(x + size, y + size)
@@ -102,6 +106,21 @@ function Home() {
     ctx.fillStyle = fillColor
     ctx.fill()
     ctx.stroke()
+  }
+
+  function drawLine(startX, startY, endX, endY, lineSize, lineColor) {
+    ctx.beginPath()
+    ctx.lineWidth = lineSize
+    ctx.strokeStyle = lineColor
+    ctx.moveTo(startX, startY)
+    ctx.lineTo(endX, endY)
+    ctx.stroke()
+  }
+
+  function drawText(text, x, y, lineColor) {
+    ctx.font = "25px Arial"
+    ctx.fillStyle = lineColor
+    ctx.fillText(text, x, y)
   }
 
   function checkForCollision(selectedPiece, tiles) {
