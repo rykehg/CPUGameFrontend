@@ -7,6 +7,8 @@ import Row from 'react-bootstrap/Row'
 import GameExemple1 from '../../assets/GameExemple1.png'
 import GameExemple2 from '../../assets/GameExemple2.png'
 import GameTabuleiroV2 from '../../assets/ProcessadorGameTabuleiroV2.png'
+import pexelspixabay1 from '../../assets/pexels-pixabay-1.jpg'
+import pexelsathena2 from '../../assets/pexels-athena-2.jpg'
 
 export default function Home() {
 
@@ -23,7 +25,17 @@ export default function Home() {
         <Carousel interval={3000} keyboard={false} pauseOnHover={true}>
           <Carousel.Item>
             <img
-              className="d-block w-100 full"
+              className="d-block w-100 crop"
+              src={pexelspixabay1}
+              alt="Third slide"
+            />
+            <Carousel.Caption>
+              <h3>CPU Game</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100 crop"
               src={GameTabuleiroV2}
               alt="First slide"
             />
@@ -34,24 +46,9 @@ export default function Home() {
           <Carousel.Item>
             <img
               className="d-block w-100 crop"
-              src={GameExemple1}
+              src={pexelsathena2}
               alt="Third slide"
             />
-            <Carousel.Caption>
-              <h3>Exemplo do Jogo</h3>
-              <p>Movimentos de um processo até atingir um objetivo.</p>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100 full"
-              src={GameExemple2}
-              alt="Third slide"
-            />
-            <Carousel.Caption>
-              <h3>Exemplo do Jogo</h3>
-              <p>Movimentos de um processo até atingir um objetivo.</p>
-            </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </Row>
