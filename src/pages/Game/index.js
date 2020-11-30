@@ -25,6 +25,27 @@ function Home() {
   let startX = null
   let startY = null
 
+  const clockPointer = [
+    {id: 0, xStart: 53, yStart: 466, xEnd: 53, yEnd: 443, size: 3, color: "Lime"},
+    {id: 1, xStart: 53, yStart: 466, xEnd: 63, yEnd: 447, size: 3, color: "Lime"},
+    {id: 2, xStart: 53, yStart: 466, xEnd: 71, yEnd: 452, size: 3, color: "Red"},
+    {id: 3, xStart: 53, yStart: 466, xEnd: 73, yEnd: 464, size: 3, color: "Lime"},
+    {id: 4, xStart: 53, yStart: 466, xEnd: 71, yEnd: 475, size: 3, color: "Lime"},
+    {id: 5, xStart: 53, yStart: 466, xEnd: 65, yEnd: 483, size: 3, color: "Red"},
+    {id: 6, xStart: 53, yStart: 466, xEnd: 53, yEnd: 487, size: 3, color: "Lime"},
+    {id: 7, xStart: 53, yStart: 466, xEnd: 42, yEnd: 484, size: 3, color: "Lime"},
+    {id: 8, xStart: 53, yStart: 466, xEnd: 36, yEnd: 476, size: 3, color: "Red"},
+    {id: 9, xStart: 53, yStart: 466, xEnd: 32, yEnd: 465, size: 3, color: "Lime"},
+    {id: 10, xStart: 54, yStart: 466, xEnd: 35, yEnd: 453, size: 3, color: "Lime"},
+    {id: 11, xStart: 54, yStart: 466, xEnd: 42, yEnd: 447, size: 3, color: "Red"}
+  ]
+  let clockHitBox = {x: 15, y: 425, sizeX: 77, sizeY: 77, isDown: false, position: 0}
+
+  const processorNumber = [
+    {number: "1"}, {number: "2"}, {number: "3"}
+  ]
+  let processorHitBox = {x: 150, y: 459, sizeX: 35, sizeY: 25, isDown: false, position: 1}
+
   //let game = creatGame()
   let game = setupGame()
   objDrag = game.state.piecesInPlay
@@ -49,6 +70,14 @@ function Home() {
     ctx.clearRect(0, 0, canvas.current.clientWidth, canvas.current.clientHeight)
     const img = document.getElementById("boardImage")
     ctx.drawImage(img, 0, 0, 960, 540)
+    //Clock Line
+    //drawRectangle(15, 425, 77, 77, 2, "blue", "blue") //hitbox
+    const line = clockPointer[clockHitBox.position]
+    drawLine(line.xStart, line.yStart, line.xEnd, line.yEnd, line.size, line.color)
+    //Number of processors 1x, 2x, 3x
+    //drawRectangle(150, 459, 35, 25, 2, "blue", "blue") //hitbox
+    const text = processorNumber[processorHitBox.position]
+    drawText(text.number, 153, 481, "Lime")
     //Highlight objCollided
     if (objCollided) {
       const os = objCollided
@@ -91,7 +120,6 @@ function Home() {
 
   function drawTriangle(x, y, size, lineSize, lineColor, fillColor) {
     const height = size * Math.cos(Math.PI / 6)
-
     ctx.beginPath()
     ctx.moveTo(x, y + size)
     ctx.lineTo(x + size, y + size)
@@ -102,6 +130,21 @@ function Home() {
     ctx.fillStyle = fillColor
     ctx.fill()
     ctx.stroke()
+  }
+
+  function drawLine(startX, startY, endX, endY, lineSize, lineColor) {
+    ctx.beginPath()
+    ctx.lineWidth = lineSize
+    ctx.strokeStyle = lineColor
+    ctx.moveTo(startX, startY)
+    ctx.lineTo(endX, endY)
+    ctx.stroke()
+  }
+
+  function drawText(text, x, y, lineColor) {
+    ctx.font = "25px Arial"
+    ctx.fillStyle = lineColor
+    ctx.fillText(text, x, y)
   }
 
   function checkForCollision(selectedPiece, tiles) {
@@ -117,7 +160,7 @@ function Home() {
       }
     }
   }
-  // identify the click event in the rectangle
+  // identify the click event in the objDrag
   const hitBox = (x, y) => {
     let isTarget = null
     for (let i = 0; i < objDrag.length; i++) {
@@ -131,12 +174,36 @@ function Home() {
     }
     return isTarget
   }
+
+  function hitBoxMenus (x, y, o) {
+    if (x >= o.x && x <= o.x + o.sizeX && y >= o.y && y <= o.y + o.sizeY) {
+      o.isDown = true
+    }
+    return o
+  }
+
+  function menusCountUp(o, v) {
+    if (o.isDown === true) {
+      if (o.position < v.length-1) {
+        o.position++
+      }
+      else {
+        o.position = 0
+      }
+      draw()
+    }
+    o.isDown = false
+    return o
+  }
+
   const handleMouseDown = e => {
     startX = parseInt(e.nativeEvent.offsetX - canvas.current.clientLeft)
     startY = parseInt(e.nativeEvent.offsetY - canvas.current.clientTop)
     objSelected = null
     objCollided = null
     isDown = hitBox(startX, startY)
+    clockHitBox = hitBoxMenus(startX, startY, clockHitBox)
+    processorHitBox = hitBoxMenus(startX, startY, processorHitBox)
   }
   const handleMouseMove = e => {
     if (!isDown) return
@@ -174,6 +241,9 @@ function Home() {
       isDown = false
       draw()
     }
+    clockHitBox = menusCountUp(clockHitBox, clockPointer)
+    processorHitBox = menusCountUp(processorHitBox, processorNumber)
+    
   }
   const handleMouseOut = e => {
     handleMouseUp(e)
