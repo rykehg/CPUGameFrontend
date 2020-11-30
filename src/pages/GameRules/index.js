@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 import Descricao from './1Descricao'
 import Objetivo from './2Objetivo'
@@ -51,6 +52,9 @@ export default function Home() {
                 <Nav.Item>
                   <Nav.Link eventKey="seventh">7. Componentes do Tabuleiro</Nav.Link>
                 </Nav.Item>
+                <Button variant="outline-success" block={true}>
+                  <a href="https://drive.google.com/file/d/17Xk8j_Na2SzHVEYy8nvnpSKSmL9hCPEw/view?usp=sharing" target="_blank">Download PDF</a>
+                </Button>
               </Nav>
             </Col>
             <Col sm={9}>
