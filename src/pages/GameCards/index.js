@@ -9,9 +9,7 @@ import Tab from 'react-bootstrap/Tab'
 import Card from 'react-bootstrap/Card'
 import CardDeck from 'react-bootstrap/CardDeck'
 import CardColumns from 'react-bootstrap/CardColumns'
-
-import GameExemple1 from '../../assets/GameExemple1.png'
-import GameExemple2 from '../../assets/GameExemple2.png'
+import Button from 'react-bootstrap/Button'
 
 export default function Home() {
 
@@ -20,6 +18,15 @@ export default function Home() {
       <Row>
         <Col>
           <h2>Cartas do Jogo</h2>
+        </Col>
+        <Col xs={2}>
+          <Button variant="outline-success" block={true}>
+              <a href="https://drive.google.com/file/d/1y_xjyX-epGM_FK4-x_y5X-kzmsH3qd21/view?usp=sharing" target="_blank">Download PDF</a>
+          </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
             <Tab eventKey="Objetivos" title="Objetivos">
               <br/>
