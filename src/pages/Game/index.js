@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import creatGame from './gameState'
 import setupGame from './setupGame'
-import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi'
+import { FiPlusCircle, FiMinusCircle, FiLock } from 'react-icons/fi'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Toast from 'react-bootstrap/Toast'
@@ -87,10 +87,18 @@ function Home() {
     for (let i = 0; i < objDrag.length; i++) {
       const o = objDrag[i]
       if (o === objSelected) {
-        drawCircle(o.x, o.y, o.size, o.size / 7, 'yellow', o.color)
+        if (o.isLocked === true){
+          drawTriangle(o.x, o.y, o.size, o.size / 7, 'yellow', o.color)
+        } else {
+          drawCircle(o.x, o.y, o.size, o.size / 7, 'yellow', o.color)
+        }
       }
       else {
-        drawCircle(o.x, o.y, o.size, 0, o.color, o.color)
+        if (o.isLocked === true){
+          drawTriangle(o.x, o.y, o.size, 0, o.color, o.color)
+        } else {
+          drawCircle(o.x, o.y, o.size, 0, o.color, o.color)
+        }
       }
     }
     //objDrag.map(info => drawTriangle(info))
@@ -270,9 +278,11 @@ function Home() {
     }
   }
   
-  let playerObjetives = []
-  function startGame() {
-
+  function lockPlayer() {
+    const playerId = objSelected.playerId
+    game.lockPlayer({playerId: playerId})
+    objDrag = game.state.piecesInPlay
+    draw()
   }
   const [show, setShow] = useState(false);
   return (
@@ -302,17 +312,14 @@ function Home() {
             ref={canvas}></canvas>
         </Col>
         <Col md={1} className="Menu">
-          <Button variant="outline-success" block={true} onClick={startGame}>
-            Iniciar
+          <Button variant="outline-primary" block={true} onClick={lockPlayer}>
+            <FiLock size={18} />
           </Button>
           <Button variant="outline-success" block={true} onClick={addPiece}>
             <FiPlusCircle size={18} />
           </Button>
           <Button variant="outline-danger" block={true} onClick={removePiece}>
             <FiMinusCircle size={18} />
-          </Button>
-          <Button variant="outline-danger" block={true}>
-            Fim
           </Button>
         </Col>
       </Row>
