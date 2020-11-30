@@ -183,11 +183,9 @@ function Home() {
   }
 
   function menusCountUp(o, v) {
-    console.log("Position antes: " + o.position + "v tamanho: " + v.length)
     if (o.isDown === true) {
       if (o.position < v.length-1) {
         o.position++
-        console.log("Position depois: " + o.position + "v tamanho: " + v.length)
       }
       else {
         o.position = 0
