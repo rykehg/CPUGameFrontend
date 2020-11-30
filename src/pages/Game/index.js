@@ -26,12 +26,25 @@ function Home() {
   let startY = null
 
   const clockPointer = [
-    {xStart: 54, yStart: 466, xEnd: 54, yEnd: 448, size: 3, color: "Lime"},
-    {xStart: 54, yStart: 466, xEnd: 35, yEnd: 453, size: 3, color: "Lime"}
+    {id: 0, xStart: 53, yStart: 466, xEnd: 53, yEnd: 443, size: 3, color: "Lime"},
+    {id: 1, xStart: 53, yStart: 466, xEnd: 63, yEnd: 447, size: 3, color: "Lime"},
+    {id: 2, xStart: 53, yStart: 466, xEnd: 71, yEnd: 452, size: 3, color: "Red"},
+    {id: 3, xStart: 53, yStart: 466, xEnd: 73, yEnd: 464, size: 3, color: "Lime"},
+    {id: 4, xStart: 53, yStart: 466, xEnd: 71, yEnd: 475, size: 3, color: "Lime"},
+    {id: 5, xStart: 53, yStart: 466, xEnd: 65, yEnd: 483, size: 3, color: "Red"},
+    {id: 6, xStart: 53, yStart: 466, xEnd: 53, yEnd: 487, size: 3, color: "Lime"},
+    {id: 7, xStart: 53, yStart: 466, xEnd: 42, yEnd: 484, size: 3, color: "Lime"},
+    {id: 8, xStart: 53, yStart: 466, xEnd: 36, yEnd: 476, size: 3, color: "Red"},
+    {id: 9, xStart: 53, yStart: 466, xEnd: 32, yEnd: 465, size: 3, color: "Lime"},
+    {id: 10, xStart: 54, yStart: 466, xEnd: 35, yEnd: 453, size: 3, color: "Lime"},
+    {id: 11, xStart: 54, yStart: 466, xEnd: 42, yEnd: 447, size: 3, color: "Red"}
   ]
+  let clockHitBox = {x: 15, y: 425, sizeX: 77, sizeY: 77, isDown: false, position: 0}
 
-  const clock = {x: 15, Y: 425, sizeX: 77, sizeY: 77, isDown: false, position: 0}
-  const processor = {x: 150, Y: 459, sizeX: 35, sizeY: 25, isDown: false, position: 1}
+  const processorNumber = [
+    {number: "1"}, {number: "2"}, {number: "3"}
+  ]
+  let processorHitBox = {x: 150, y: 459, sizeX: 35, sizeY: 25, isDown: false, position: 1}
 
   //let game = creatGame()
   let game = setupGame()
@@ -58,10 +71,13 @@ function Home() {
     const img = document.getElementById("boardImage")
     ctx.drawImage(img, 0, 0, 960, 540)
     //Clock Line
-    drawLine(54, 466, 35, 453, 3, "Lime")
-    //ctx.font = "30px Arial"
-    //ctx.fillText("2", 150, 482)
-    drawText("2", 153, 481, "Lime")
+    //drawRectangle(15, 425, 77, 77, 2, "blue", "blue") //hitbox
+    const line = clockPointer[clockHitBox.position]
+    drawLine(line.xStart, line.yStart, line.xEnd, line.yEnd, line.size, line.color)
+    //Number of processors 1x, 2x, 3x
+    //drawRectangle(150, 459, 35, 25, 2, "blue", "blue") //hitbox
+    const text = processorNumber[processorHitBox.position]
+    drawText(text.number, 153, 481, "Lime")
     //Highlight objCollided
     if (objCollided) {
       const os = objCollided
@@ -77,8 +93,6 @@ function Home() {
         drawCircle(o.x, o.y, o.size, 0, o.color, o.color)
       }
     }
-    drawRectangle(15, 425, 77, 77, 2, "blue", "blue")
-    drawRectangle(150, 459, 35, 25, 2, "blue", "blue")
     //objDrag.map(info => drawTriangle(info))
   }
 
@@ -161,10 +175,27 @@ function Home() {
     return isTarget
   }
 
-  const hitBoxMenus = (x, y, o) => {
-    if (x >= o.x && x <= o.x + o.sizeX && y >= o.y && y <= o.y + o.sizeY){
+  function hitBoxMenus (x, y, o) {
+    if (x >= o.x && x <= o.x + o.sizeX && y >= o.y && y <= o.y + o.sizeY) {
       o.isDown = true
     }
+    return o
+  }
+
+  function menusCountUp(o, v) {
+    console.log("Position antes: " + o.position + "v tamanho: " + v.length)
+    if (o.isDown === true) {
+      if (o.position < v.length-1) {
+        o.position++
+        console.log("Position depois: " + o.position + "v tamanho: " + v.length)
+      }
+      else {
+        o.position = 0
+      }
+      draw()
+    }
+    o.isDown = false
+    return o
   }
 
   const handleMouseDown = e => {
@@ -173,6 +204,8 @@ function Home() {
     objSelected = null
     objCollided = null
     isDown = hitBox(startX, startY)
+    clockHitBox = hitBoxMenus(startX, startY, clockHitBox)
+    processorHitBox = hitBoxMenus(startX, startY, processorHitBox)
   }
   const handleMouseMove = e => {
     if (!isDown) return
@@ -210,6 +243,9 @@ function Home() {
       isDown = false
       draw()
     }
+    clockHitBox = menusCountUp(clockHitBox, clockPointer)
+    processorHitBox = menusCountUp(processorHitBox, processorNumber)
+    
   }
   const handleMouseOut = e => {
     handleMouseUp(e)
