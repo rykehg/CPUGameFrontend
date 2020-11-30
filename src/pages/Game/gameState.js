@@ -127,6 +127,22 @@ export default function creatGame() {
       delete state.tiles[tileId]
   }
 
+  function lockPlayer (command) {
+      const playerId = command.playerId
+      if(state.players[playerId].isLocked === true){
+        state.players[playerId].isLocked = false
+        for (let i = 0; i < state.players[playerId].pieces.length; i++ ){
+            state.players[playerId].pieces[i].isLocked = false
+        }
+      } else {
+        state.players[playerId].isLocked = true
+        for (let i = 0; i < state.players[playerId].pieces.length; i++ ){
+            state.players[playerId].pieces[i].isLocked = true
+        }
+      }
+      addPiecesInPlay()
+  }
+
   return {
       addPlayer,
       removePlayer,
@@ -136,6 +152,7 @@ export default function creatGame() {
       addTile,
       removeTile,
       setPieceNewStatus,
+      lockPlayer,
       state
   }
 }
